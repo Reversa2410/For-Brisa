@@ -1,4 +1,4 @@
-/* styles.css - VERSION FINAL CON FONDO Y POSICIONAMIENTO CORREGIDO */
+/* styles.css - VERSION FINAL, CON FONDO Y RESPONSIVIDAD */
 
 body {
   margin: 0;
@@ -7,7 +7,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* El fondo de degradado que debe ser visible */
   background: linear-gradient(135deg, #fce0f3, #e8d0ff);
   font-family: sans-serif;
   overflow: hidden;
@@ -19,12 +18,13 @@ body {
   position: relative;
   padding: 20px;
   box-sizing: border-box;
-  max-width: 80%;
+  max-width: 95%; /* Ajustado para mejor responsividad */
+  width: 100%;
 }
 
 /* Las pantallas ocupan todo el espacio y se apilan */
 .screen {
-  position: absolute;
+  position: absolute; /* CLAVE para apilamiento */
   top: 0;
   left: 0;
   width: 100%;
@@ -34,8 +34,7 @@ body {
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
-  /* CLAVE: FUERZA LA TRANSPARENCIA PARA VER EL FONDO DEL BODY */
-  background-color: transparent; 
+  background-color: transparent; /* CLAVE para ver el fondo del body */
 }
 
 /* CLASE HIDDEN: Saca el elemento del flujo. */
@@ -43,7 +42,7 @@ body {
   display: none !important;
 }
 
-/* TEXTOS: Siempre visibles */
+/* TEXTOS */
 h1, h2 {
   font-size: 3rem;
   color: #a361d1;
@@ -133,7 +132,7 @@ p {
 /* ESTILOS PARA ESTRUCTURA DE CONTENIDO (IMAGENES AL LADO DEL TEXTO) */
 /* ==================== */
 .content-row {
-    display: flex;
+    display: flex; /* CLAVE para imágenes laterales */
     justify-content: center;
     align-items: center;
     gap: 30px; 
@@ -154,7 +153,7 @@ p {
     width: 150px; 
 }
 
-/* Ocultar contenido lateral si no hay imagen (ej. en pantalla 4 la izquierda está vacía) */
+/* Ocultar contenido lateral si no hay imagen */
 .side-content:empty {
     width: 0;
 }
@@ -184,4 +183,32 @@ p {
 .top-image {
     max-height: 200px;
     margin-bottom: 20px;
+}
+
+/* ==================== */
+/* MEDIA QUERIES (RESPONSIVIDAD MÓVIL: Pantallas < 768px) */
+/* ==================== */
+
+@media (max-width: 768px) {
+  
+  /* 1. Reducir el tamaño de fuente en móvil */
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  p { font-size: 1.1rem; }
+  
+  /* 2. Forzar que la fila de contenido se apile verticalmente */
+  .content-row {
+    flex-direction: column; /* CLAVE: Apila los elementos: imagen-texto-imagen */
+    gap: 15px; 
+  }
+
+  /* 3. Asegurar que las imágenes laterales no sean muy grandes */
+  .side-content {
+    width: 100%; 
+  }
+
+  .screen-image {
+    max-height: 180px; 
+    max-width: 80%;
+  }
 }
