@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Brisa</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <section class="screen" id="screen1">
+    <div class="container intro-text">
+      <img src="img/dandorosa.jpg" alt="Regalando una rosa" class="screen-image top-image">
+
+      <h1 id="screen1Title">Para Brisa</h1>
+      <p>
+        Solo quería darte un pequeño detalle...
+        algo sencillo, pero hecho con cariño.
+      </p>
+      <button class="animated-btn nav-btn" data-target="screen2">Empezar</button>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="screen2">
+    <div class="container">
+      <h2 id="screen2Title">¡Te amo!</h2>
+      
+      <div class="content-row">
+        <div class="side-content left-content">
+          <img src="img/supershay.jpg" alt="Supershy" class="screen-image side-image left-image">
+        </div>
+        
+        <div class="main-content">
+          <p id="screen2Text">
+            Eres la mejor persona que he conocido. 
+            Gracias por iluminar mi vida cada día con tu risa.
+          </p>
+        </div>
+        
+        <div class="side-content right-content">
+          <img src="img/shy.jpg" alt="Shy" class="screen-image side-image right-image">
+        </div>
+      </div>
+
+      <div class="nav-controls">
+        <button class="animated-btn nav-btn" data-target="screen1" data-direction="back">Anterior</button>
+        <button class="animated-btn nav-btn" data-target="screen3">Siguiente</button>
+      </div>
+    </div>
+  </section>
+  
+  <section class="screen hidden" id="screen3">
+    <div class="container">
+      <h2 id="screen3Title">¿Recuerdas esto?</h2>
+      
+      <div class="content-row">
+        <div class="side-content left-content">
+          <img src="img/enamorado.jpg" alt="Enamorado" class="screen-image side-image left-image">
+        </div>
+        
+        <div class="main-content">
+          <p id="screen3Text">
+            Cada momento a tu lado es mi recuerdo favorito. 
+            Gracias por estar ahí, siempre.
+          </p>
+        </div>
+        
+        <div class="side-content right-content">
+          <img src="img/isforyou.jpg" alt="IsForYou" class="screen-image side-image right-image">
+        </div>
+      </div>
+
+      <div class="nav-controls">
+        <button class="animated-btn nav-btn pulse-btn" data-target="screen2" data-direction="back">Anterior</button>
+        <button class="animated-btn nav-btn" data-target="screen4">Siguiente</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="screen4">
+    <div class="container">
+      <h2 id="screen4Title">¡Gracias por todo!</h2>
+
+      <div class="content-row">
+        <div class="main-content">
+          <p id="screen4Text">
+            Espero que te haya gustado este pequeño detalle.
+            Siempre te voy a querer, mi amor.
+          </p>
+          <div id="endMessage">¡Fin del mensaje!</div>
+        </div>
+        
+        <div class="side-content right-content">
+          <img src="img/despedida.jpg" alt="Despedida" class="screen-image side-image right-image">
+        </div>
+      </div>
+
+      <div class="nav-controls">
+        <button class="animated-btn nav-btn" data-target="screen3" data-direction="back">Anterior</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

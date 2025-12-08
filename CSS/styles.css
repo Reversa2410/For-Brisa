@@ -1,0 +1,187 @@
+/* styles.css - MODO SEGURO: TODO VISIBLE */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #fce0f3, #e8d0ff);
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  z-index: 10;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 80%;
+}
+
+/* Las pantallas ocupan todo el espacio */
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* CLASE HIDDEN: Saca el elemento del flujo. NO USAMOS OPACITY. */
+.hidden {
+  display: none !important;
+}
+
+/* TEXTOS: Siempre visibles */
+h1, h2 {
+  font-size: 3rem;
+  color: #a361d1;
+  margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.4rem;
+  color: #c09de5;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+#endMessage {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    color: #ff99cc;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* BOTONES: Siempre visibles */
+.animated-btn {
+  background-color: #ff99cc;
+  color: #ffffff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 30px;
+  box-shadow: 0 4px 15px rgba(255, 153, 204, 0.6);
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 1px;
+  /* Aseguramos que se comporten como bloque en linea */
+  display: inline-block; 
+}
+
+.animated-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 153, 204, 0.9);
+}
+
+.nav-controls {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%; /* Asegura que ocupe espacio */
+}
+
+.pulse-btn {
+    background-color: #a361d1;
+    box-shadow: 0 4px 15px rgba(163, 95, 209, 0.6);
+}
+
+/* Corazones */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ffc2e2;
+  transform: rotate(45deg);
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ffc2e2;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: -10px; top: 0; }
+
+/* ==================== */
+/* ESTILOS PARA ESTRUCTURA DE CONTENIDO (IMAGENES AL LADO DEL TEXTO) */
+/* ==================== */
+.content-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Espacio entre el texto y las imágenes */
+    margin-top: 30px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.main-content {
+    flex-grow: 1; /* Permite que el texto crezca y ocupe el espacio principal */
+    max-width: 500px; 
+}
+
+.side-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Ajusta el ancho para dejar espacio al texto central */
+    width: 150px; 
+}
+
+/* Ocultar contenido lateral si no hay imagen (ej. en pantalla 4 la izquierda está vacía) */
+.side-content:empty {
+    width: 0;
+}
+
+
+/* ==================== */
+/* ESTILOS PARA IMÁGENES */
+/* ==================== */
+.screen-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 250px; /* Altura máxima para imágenes grandes (dandorosa.jpg) */
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(163, 95, 209, 0.3);
+  margin: 10px auto;
+  display: block;
+  transform: translateZ(0); 
+}
+
+/* Imágenes que están al lado del texto */
+.side-image {
+    max-height: 150px; /* Reducimos la altura para que encajen mejor */
+    /* Aseguramos que la imagen no tenga margen extra si está al lado del texto */
+    margin: 0; 
+}
+
+/* Imagen de la Pantalla 1 (Arriba del título) */
+.top-image {
+    max-height: 200px;
+    margin-bottom: 20px;
+}
