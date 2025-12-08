@@ -1,4 +1,4 @@
-// main.js - VERSIÓN ESTABLE, SEGURA y CON IMÁGENES ANIMADAS
+// main.js - VERSIÓN FINAL, ESTABLE Y SEGURA
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const allScreens = document.querySelectorAll(".screen");
     const navButtons = document.querySelectorAll(".nav-btn");
 
-    // 2. Función para animar la entrada (ACTUALIZADA CON ANIMACIONES LATERALES PARA IMÁGENES)
+    // 2. Función para animar la entrada 
     function animateScreenEntry(screenId) {
         
         gsap.killTweensOf(".pulse-btn"); 
@@ -16,10 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = document.querySelector(`#${screenId} p`);
         const buttons = document.querySelectorAll(`#${screenId} .nav-btn`);
         const endMsg = document.querySelector(`#${screenId} #endMessage`);
-        
-        // Seleccionamos la imagen superior (si existe)
         const topImage = document.querySelector(`#${screenId} .top-image`);
-        // Seleccionamos las imágenes laterales (si existen)
         const leftImages = document.querySelectorAll(`#${screenId} .left-image`);
         const rightImages = document.querySelectorAll(`#${screenId} .right-image`);
 
@@ -32,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tl.from(title, { y: 30, duration: 1, ease: "power2.out", clearProps: "all" }, 0.1);
         }
         
-        // 2. Imagen Superior (si existe)
+        // 2. Imagen Superior
         if(topImage) {
             tl.from(topImage, { y: -30, duration: 1, ease: "power2.out", clearProps: "all" }, 0);
         }
@@ -58,14 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }, ">");
         }
         
-        // --- ANIMACIÓN LATERAL (FUERA DE LA LÍNEA DE TIEMPO PRINCIPAL PARA ENTRAR AL MISMO TIEMPO) ---
+        // --- ANIMACIÓN LATERAL ---
         
         // Imágenes Izquierdas (Entran desde la izquierda)
         if (leftImages.length > 0) {
             gsap.from(leftImages, { 
                 x: -50, 
                 duration: 0.8, 
-                delay: 0.2, // Entran casi al inicio de la pantalla
+                delay: 0.2, 
                 ease: "power2.out", 
                 clearProps: "all" 
             });
@@ -76,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.from(rightImages, { 
                 x: 50, 
                 duration: 0.8, 
-                delay: 0.2, // Entran casi al inicio de la pantalla
+                delay: 0.2, 
                 ease: "power2.out", 
                 clearProps: "all" 
             });
@@ -90,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 3. Función de Transición entre pantallas (SIN CAMBIOS)
+    // 3. Función de Transición entre pantallas
     function transitionScreens(currentScreenId, nextScreenId, direction) {
         const currentScreen = document.getElementById(currentScreenId);
         const nextScreen = document.getElementById(nextScreenId);
@@ -123,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Configuración de Botones (SIN CAMBIOS)
+    // 4. Configuración de Botones
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
             const nextScreenId = button.getAttribute('data-target');
@@ -142,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Generador de Corazones (SIN CAMBIOS)
+    // 5. Generador de Corazones
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");

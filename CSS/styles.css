@@ -1,4 +1,4 @@
-/* styles.css - MODO SEGURO: TODO VISIBLE */
+/* styles.css - VERSION FINAL CON FONDO Y POSICIONAMIENTO CORREGIDO */
 
 body {
   margin: 0;
@@ -7,6 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* El fondo de degradado que debe ser visible */
   background: linear-gradient(135deg, #fce0f3, #e8d0ff);
   font-family: sans-serif;
   overflow: hidden;
@@ -21,7 +22,7 @@ body {
   max-width: 80%;
 }
 
-/* Las pantallas ocupan todo el espacio */
+/* Las pantallas ocupan todo el espacio y se apilan */
 .screen {
   position: absolute;
   top: 0;
@@ -33,9 +34,11 @@ body {
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
+  /* CLAVE: FUERZA LA TRANSPARENCIA PARA VER EL FONDO DEL BODY */
+  background-color: transparent; 
 }
 
-/* CLASE HIDDEN: Saca el elemento del flujo. NO USAMOS OPACITY. */
+/* CLASE HIDDEN: Saca el elemento del flujo. */
 .hidden {
   display: none !important;
 }
@@ -67,7 +70,7 @@ p {
     letter-spacing: 2px;
 }
 
-/* BOTONES: Siempre visibles */
+/* BOTONES */
 .animated-btn {
   background-color: #ff99cc;
   color: #ffffff;
@@ -81,7 +84,6 @@ p {
   box-shadow: 0 4px 15px rgba(255, 153, 204, 0.6);
   transition: transform 0.2s, box-shadow 0.2s;
   letter-spacing: 1px;
-  /* Aseguramos que se comporten como bloque en linea */
   display: inline-block; 
 }
 
@@ -95,7 +97,7 @@ p {
     display: flex;
     justify-content: center;
     gap: 15px;
-    width: 100%; /* Asegura que ocupe espacio */
+    width: 100%; 
 }
 
 .pulse-btn {
@@ -134,14 +136,14 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px; /* Espacio entre el texto y las imágenes */
+    gap: 30px; 
     margin-top: 30px;
     max-width: 900px;
     width: 100%;
 }
 
 .main-content {
-    flex-grow: 1; /* Permite que el texto crezca y ocupe el espacio principal */
+    flex-grow: 1;
     max-width: 500px; 
 }
 
@@ -149,7 +151,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Ajusta el ancho para dejar espacio al texto central */
     width: 150px; 
 }
 
@@ -165,7 +166,7 @@ p {
 .screen-image {
   max-width: 100%;
   height: auto;
-  max-height: 250px; /* Altura máxima para imágenes grandes (dandorosa.jpg) */
+  max-height: 250px; 
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(163, 95, 209, 0.3);
   margin: 10px auto;
@@ -175,8 +176,7 @@ p {
 
 /* Imágenes que están al lado del texto */
 .side-image {
-    max-height: 150px; /* Reducimos la altura para que encajen mejor */
-    /* Aseguramos que la imagen no tenga margen extra si está al lado del texto */
+    max-height: 150px; 
     margin: 0; 
 }
 
