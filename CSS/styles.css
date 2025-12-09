@@ -18,13 +18,13 @@ body {
   position: relative;
   padding: 20px;
   box-sizing: border-box;
-  max-width: 95%; /* Ajustado para mejor responsividad */
+  max-width: 95%; 
   width: 100%;
 }
 
 /* Las pantallas ocupan todo el espacio y se apilan */
 .screen {
-  position: absolute; /* CLAVE para apilamiento */
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
@@ -34,7 +34,7 @@ body {
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
-  background-color: transparent; /* CLAVE para ver el fondo del body */
+  background-color: transparent; 
 }
 
 /* CLASE HIDDEN: Saca el elemento del flujo. */
@@ -132,7 +132,7 @@ p {
 /* ESTILOS PARA ESTRUCTURA DE CONTENIDO (IMAGENES AL LADO DEL TEXTO) */
 /* ==================== */
 .content-row {
-    display: flex; /* CLAVE para imágenes laterales */
+    display: flex; 
     justify-content: center;
     align-items: center;
     gap: 30px; 
@@ -198,7 +198,7 @@ p {
   
   /* 2. Forzar que la fila de contenido se apile verticalmente */
   .content-row {
-    flex-direction: column; /* CLAVE: Apila los elementos: imagen-texto-imagen */
+    flex-direction: column; 
     gap: 15px; 
   }
 
