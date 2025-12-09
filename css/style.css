@@ -1,12 +1,12 @@
-/* styles.css - ADAPTADO PARA SCROLL VERTICAL Y RESPONSIVIDAD */
+/* style.css - ADAPTADO PARA SCROLL VERTICAL Y RESPONSIVIDAD */
 
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* Permite scroll */
-  background: linear-gradient(135deg, #fce0f3, #e8d0ff);
+  min-height: 100vh; 
+  background: linear-gradient(135deg, #fce0f3, #e8d0ff); /* FONDO DEGRADADO */
   font-family: sans-serif;
-  overflow-x: hidden; /* Evita scroll horizontal */
+  overflow-x: hidden; 
 }
 
 .container {
@@ -21,21 +21,18 @@ body {
 
 /* Pantallas configuradas para scroll: */
 .screen {
-  position: relative; /* CLAVE: Ahora es relative, no absolute */
+  position: relative; 
   top: 0;
   left: 0;
   width: 100%;
-  /* CLAVE: Cada pantalla ocupa toda la altura para forzar el scroll */
-  height: 100vh; 
+  height: 100vh; /* Ocupa toda la altura de la ventana */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
-  background-color: transparent; 
+  background-color: transparent; /* CLAVE para ver el fondo del body */
 }
-
-/* NOTA: La clase .hidden ya no es necesaria y fue eliminada del HTML. */
 
 /* TEXTOS */
 h1, h2 {
@@ -64,11 +61,6 @@ p {
     letter-spacing: 2px;
 }
 
-/* Botones y nav-controls eliminados del HTML */
-.nav-controls {
-    display: none;
-}
-
 /* Corazones */
 .heart {
   position: absolute;
@@ -78,7 +70,6 @@ p {
   transform: rotate(45deg);
   border-radius: 5px;
   opacity: 0.8;
-  /* Corregido para que los corazones no se vean en el scroll de las secciones, solo en el body */
   z-index: -1; 
 }
 
@@ -95,9 +86,7 @@ p {
 .heart::before { top: -10px; left: 0; }
 .heart::after { left: -10px; top: 0; }
 
-/* ==================== */
-/* ESTILOS PARA ESTRUCTURA DE CONTENIDO */
-/* ==================== */
+/* ESTRUCTURA DE CONTENIDO */
 .content-row {
     display: flex; 
     justify-content: center;
@@ -125,9 +114,7 @@ p {
 }
 
 
-/* ==================== */
 /* ESTILOS PARA IMÁGENES */
-/* ==================== */
 .screen-image {
   max-width: 100%;
   height: auto;
@@ -148,10 +135,7 @@ p {
     margin-bottom: 20px;
 }
 
-/* ==================== */
 /* MEDIA QUERIES (RESPONSIVIDAD MÓVIL) */
-/* ==================== */
-
 @media (max-width: 768px) {
   
   h1 { font-size: 2.5rem; }
