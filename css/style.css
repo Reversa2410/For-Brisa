@@ -1,12 +1,20 @@
 /* style.css - ADAPTADO PARA SCROLL VERTICAL Y RESPONSIVIDAD */
 
-body {
+html, body {
   margin: 0;
   padding: 0;
-  min-height: 100vh; 
-  background: linear-gradient(135deg, #fce0f3, #e8d0ff); /* FONDO DEGRADADO */
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* CLAVE: Evita scroll horizontal en móviles */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  background: linear-gradient(135deg, #fce0f3, #e8d0ff); 
   font-family: sans-serif;
-  overflow-x: hidden; 
 }
 
 .container {
@@ -31,7 +39,7 @@ body {
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
-  background-color: transparent; /* CLAVE para ver el fondo del body */
+  background-color: transparent; 
 }
 
 /* TEXTOS */

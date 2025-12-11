@@ -1,11 +1,13 @@
-// main.js - ADAPTADO A SCROLLTRIGGER
+// main.js - SOLUCIÓN DEFINITIVA DE ANIMACIONES EN MÓVIL
 
-document.addEventListener('DOMContentLoaded', () => {
+// CAMBIO IMPORTANTE: Usamos 'load' en vez de 'DOMContentLoaded'
+// Esto asegura que las animaciones se configuren SÓLO después de que todas las imágenes han cargado.
+window.addEventListener('load', () => {
 
     // 1. Registrar GSAP y ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // 2. Generador de Corazones (solo en el body, se mueven siempre)
+    // 2. Generador de Corazones 
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -20,22 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
       heart.style.height = size + "px";
 
       gsap.to(heart, {
-        y: -window.innerHeight * 2, // Lo hacemos flotar mucho más para que salga de la vista
+        y: -window.innerHeight * 2, 
         opacity: 0,
         duration: duration,
         ease: "sine.out",
         onComplete: () => heart.remove()
       });
     }
-    // Iniciamos la lluvia de corazones
     setInterval(createHeart, 400); 
 
-    // 3. Función para configurar las animaciones de ScrollTrigger
+    // 3. Función para configurar las animaciones
     function setupScrollAnimations() {
         const screens = document.querySelectorAll(".screen");
 
-        screens.forEach((screen, index) => {
-            const screenId = screen.id;
+        screens.forEach((screen) => {
             const title = screen.querySelector('h1') || screen.querySelector('h2');
             const text = screen.querySelector('p');
             const endMsg = screen.querySelector('#endMessage');
@@ -43,56 +43,45 @@ document.addEventListener('DOMContentLoaded', () => {
             const leftImages = screen.querySelectorAll('.left-image');
             const rightImages = screen.querySelectorAll('.right-image');
 
-            // Creamos una línea de tiempo para la animación de cada pantalla
+            // Línea de tiempo con ScrollTrigger
             const tl = gsap.timeline({
-                // La animación se dispara cuando el top del elemento (.screen) llega al 70% del viewport
                 scrollTrigger: {
                     trigger: screen,
-                    start: "top 70%", 
+                    start: "top 75%", // Se activa cuando el top del elemento está al 75% de la pantalla
                     end: "bottom top", 
-                    toggleActions: "play none none reverse", // Se reproduce al entrar, se revierte al salir
-                    // markers: true, // Descomenta esto para ver el trigger de GSAP
+                    toggleActions: "play none none reverse", 
                 }
             });
 
-            // 1. Animación de entrada general
+            // 1. Entrada general de la pantalla
             tl.from(screen, { 
                 opacity: 0, 
                 duration: 0.5, 
-                y: 50, 
+                y: 30, 
                 ease: "power1.out" 
             }, 0);
 
-            // 2. Animación del Título
-            if(title) {
-                tl.from(title, { y: 30, opacity: 0, duration: 1, ease: "power2.out" }, 0.1);
-            }
+            // 2. Elementos internos
+            if(title) tl.from(title, { y: 30, opacity: 0, duration: 1, ease: "power2.out" }, 0.2);
+            if(topImage) tl.from(topImage, { y: -30, opacity: 0, duration: 1, ease: "power2.out" }, 0.1);
+            if(text) tl.from(text, { y: 30, opacity: 0, duration: 1, ease: "power2.out" }, 0.4);
             
-            // 3. Animación de Imagen Superior (Solo en la pantalla 1)
-            if(topImage) {
-                tl.from(topImage, { y: -30, opacity: 0, duration: 1, ease: "power2.out" }, 0);
-            }
-
-            // 4. Animación del Texto
-            if(text) {
-                tl.from(text, { y: 30, opacity: 0, duration: 1, ease: "power2.out" }, 0.3);
-            }
-            
-            // 5. Animación de Imágenes Laterales
             if (leftImages.length > 0) {
-                tl.from(leftImages, { x: -50, opacity: 0, duration: 0.8, ease: "power2.out" }, 0.2);
+                tl.from(leftImages, { x: -30, opacity: 0, duration: 0.8, ease: "power2.out" }, 0.3);
             }
             if (rightImages.length > 0) {
-                tl.from(rightImages, { x: 50, opacity: 0, duration: 0.8, ease: "power2.out" }, 0.2);
+                tl.from(rightImages, { x: 30, opacity: 0, duration: 0.8, ease: "power2.out" }, 0.3);
             }
 
-            // 6. Mensaje final (solo pantalla 4)
             if(endMsg) {
-                tl.from(endMsg, { scale: 0.5, opacity: 0, duration: 1, ease: "back.out(1.7)" }, 0.5);
+                tl.from(endMsg, { scale: 0.5, opacity: 0, duration: 1, ease: "back.out(1.7)" }, 0.6);
             }
         });
+
+        // ¡CLAVE! Recalcula todas las posiciones de ScrollTrigger después de que todo cargó.
+        ScrollTrigger.refresh();
     }
 
-    // Inicializamos las animaciones
+    // Ejecutar configuración
     setupScrollAnimations();
 });
