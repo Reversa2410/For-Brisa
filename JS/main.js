@@ -107,7 +107,16 @@ window.addEventListener('load', () => {
     }
 
     if (input) {
-        input.addEventListener('input', (e) => dibujarCorazon(e.target.value));
+        // Esto evita que la página se recargue si ella presiona Enter
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') e.preventDefault();
+        });
+
+        // Esto dibuja el corazón letra por letra
+        input.addEventListener('input', (e) => {
+            console.log("Escribiendo:", e.target.value); // Para que tú veas en consola que funciona
+            dibujarCorazon(e.target.value);
+        });
     }
 
     // Inicializar todo
