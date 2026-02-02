@@ -1,10 +1,9 @@
-// main.js - SOLUCIÓN DEFINITIVA
 window.addEventListener('load', () => {
 
     // 1. Registrar GSAP y ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // 2. Generador de Corazones (Fondo animado)
+    // 2. Generador de Corazones (Fondo)
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -28,8 +27,9 @@ window.addEventListener('load', () => {
     }
     setInterval(createHeart, 400); 
 
-    // 3. Función para configurar las animaciones de las pantallas
+    // 3. Función de Animaciones
     function setupScrollAnimations() {
+        // Seleccionamos todas las pantallas, incluyendo la nueva #screen5
         const screens = document.querySelectorAll(".screen");
 
         screens.forEach((screen) => {
@@ -43,8 +43,7 @@ window.addEventListener('load', () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: screen,
-                    start: "top 75%",
-                    end: "bottom top", 
+                    start: "top 80%", // Se activa un poco antes
                     toggleActions: "play none none reverse", 
                 }
             });
@@ -64,11 +63,9 @@ window.addEventListener('load', () => {
                 tl.from(endMsg, { scale: 0.5, opacity: 0, duration: 1, ease: "back.out(1.7)" }, 0.6);
             }
         });
-
-        ScrollTrigger.refresh();
     }
 
-    // 4. LÓGICA DEL CORAZÓN (PASO A PASO)
+    // 4. Lógica del Corazón
     const plantillaCorazon = [
         "  ***** ***** ",
         " ******* ******* ",
@@ -87,11 +84,10 @@ window.addEventListener('load', () => {
     const contenedor = document.getElementById('corazonContenedor');
 
     function dibujarCorazon(nombre) {
-        if (!nombre) {
-            contenedor.innerText = "";
+        if (!nombre || !contenedor) {
+            if(contenedor) contenedor.innerText = "";
             return;
         }
-
         const textolimpio = nombre.replace(/\s/g, "");
         let resultado = "";
         let charIndex = 0;
@@ -110,13 +106,14 @@ window.addEventListener('load', () => {
         contenedor.innerText = resultado;
     }
 
-    // Escuchar el evento de escritura
     if (input) {
-        input.addEventListener('input', (e) => {
-            dibujarCorazon(e.target.value);
-        });
+        input.addEventListener('input', (e) => dibujarCorazon(e.target.value));
     }
 
-    // Ejecutar animaciones al cargar
+    // Inicializar todo
     setupScrollAnimations();
+
+    // ¡ESTO ES LO MÁS IMPORTANTE! 
+    // Obliga al navegador a ver la nueva altura de la página.
+    ScrollTrigger.refresh();
 });
