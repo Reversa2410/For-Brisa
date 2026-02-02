@@ -76,6 +76,17 @@ window.addEventListener('load', () => {
             if(endMsg) {
                 tl.from(endMsg, { scale: 0.5, opacity: 0, duration: 1, ease: "back.out(1.7)" }, 0.6);
             }
+
+            //nueva parte del corazon
+            gsap.from("#screen5 .container", {
+                scrollTrigger: {
+                    trigger: "#screen5",
+                    start: "top 80%",
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1.5
+                });
         });
 
         // ¡CLAVE! Recalcula todas las posiciones de ScrollTrigger después de que todo cargó.
@@ -85,3 +96,54 @@ window.addEventListener('load', () => {
     // Ejecutar configuración
     setupScrollAnimations();
 });
+
+const plantillaCorazon = [
+"  ***** ***** ",
+  " ******* ******* ",
+  "*****************",
+  " *************** ",
+  "  ************* ",
+  "   *********** ",
+  "    ********* ",
+  "     ******* ",
+  "      ***** ",
+  "       *** ",
+  "        * "
+];
+
+const input = document.getElementById('inputNombre');
+const contenedor = document.getElementById('corazonContenedor');
+
+//funcion que dibuja el corazon con el nombre
+function dibujarCorazon(nombre) {
+    if (!nombre) {
+        contenedor.innerText = ""; //si no hay nombre, borramos el corazon
+        return;
+    }
+
+    const textolimpio = nombre.replace(/\s/g, "");
+    let resultado = "";
+    let charIndex = 0; //contador que dira que letra del nombre toca poner
+
+    for(let fila of plantillaCorazon) {
+        for(let caracter of fila) {
+            if(caracter === "*") {
+                //aqui se aplica la logica de reemplazar el # por la letra
+                //el operador % hace que si el nombre es corto, vuelva a empezar
+                resultado += textolimpio[charIndex % textolimpio.length];
+                charIndex++;
+            } else{
+                resultado += " "//si la plantilla tiene espacio, se eliminan los espacios
+            }
+        }
+        resultado += "\n" //salto de linea al terminar cada fila
+    }
+
+    contenedor.innerText = resultado;
+
+    //escuchar cuando ella escribe
+    input.addEventListener('input', (e) => {
+        dibujarCorazon(e.target.value);
+    });
+
+}

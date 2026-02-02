@@ -164,3 +164,13 @@ p {
     max-width: 80%;
   }
 }
+
+#corazonContenedor {
+    font-family: monospace;
+    line-height: 10px;
+    font-size: 12px;
+    color: #ff4d88;
+    text-align: center;
+    margin-top: 20px;
+    white-space: pre;
+}
